@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+    Created on : 31/01/2019, 11:12:00 AM
+    Author     : Ricardo Presilla.
+    Licencia GNU.
+-->
+<html>
+    <head>
+        <title>Vue.js</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- development version, includes helpful console warnings -->
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> 
+        <link href="css/estilos.css" rel="stylesheet" /> 
+    </head>
+    <body>
+        <div id="blog-post-demo">
+            <p>Uso de componentes con el v-for con detalles y estilos.</p>
+            <div id="blog-posts-events-demo">
+                <div :style="{ fontSize: postFontSize + 'em' }">
+                  <blog-post
+                    v-for="post in posts"
+                    v-bind:key="post.id"
+                    v-bind:post="post"
+                    v-on:enlarge-text="postFontSize += $event"
+                  ></blog-post>
+                </div>
+            </div>
+        </div>
+        <div id="blog-post-demo2">
+            <p>Uso de componentes con el v-for con detalles, estilos, metodos de
+                que modifican las propiedades en el elemento padre desde el 
+                elemento hijo.</p>
+            <div id="blog-posts-events-demo2">
+                <div :style="{ fontSize: postFontSize + 'em' }">
+                  <blog-post
+                    v-for="post in posts"
+                    v-bind:key="post.id"
+                    v-bind:post="post"
+                    v-on:enlarge-text="onEnlargeText"
+                  ></blog-post>
+                </div>
+            </div>
+        </div>
+        <script src="js/main.js" type="text/javascript"></script>
+    </body>
+</html>
